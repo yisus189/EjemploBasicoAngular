@@ -1,0 +1,21 @@
+<div>
+  <h1>Lista de Tareas</h1>
+  <input [(ngModel)]="newTaskTitle" placeholder="Título de la tarea" />
+  <input [(ngModel)]="newTaskDescription" placeholder="Descripción" />
+  <button (click)="addTask()">Agregar Tarea</button>
+
+  <ul>
+    <li *ngFor="let task of tasks">
+      <div>
+        <input 
+          type="checkbox" 
+          [checked]="task.completed" 
+          (change)="toggleCompletion(task)" 
+        />
+        <span [ngClass]="{ 'completed': task.completed }">{{ task.title }}</span>
+        <p>{{ task.description }}</p> <!-- Aquí se muestra la descripción -->
+        <button (click)="deleteTask(task._id)">Eliminar</button>
+      </div>
+    </li>
+  </ul>
+</div>
